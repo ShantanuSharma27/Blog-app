@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', Router);
 
 // Update __dirname1 to point to the correct directory
-const __dirname1 = 'D:/Laukik-Blog app/client/build';
+const __dirname1 = '/client/build';
 
 if (process.env.NODE_ENV === "production") {
   // Serve static files from the updated build directory
