@@ -23,16 +23,16 @@ app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', Router);
 
-// Update __dirname1 to point to the correct directory
-const __dirname1 = '/client/build';
+// Corrected path to point to the client build directory
+const buildPath = path.resolve(__dirname, '../client/build');
 
 if (process.env.NODE_ENV === "production") {
-  // Serve static files from the updated build directory
-  app.use(express.static(__dirname1));
+  // Serve static files from the build directory
+  app.use(express.static(buildPath));
 
   // Serve index.html for all routes
   app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname1, "index.html"))
+    res.sendFile(path.resolve(buildPath, "index.html"))
   );
 } else {
   app.get("/", (req, res) => {
